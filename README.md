@@ -12,29 +12,34 @@ Fixed-pitch VAWTs experience severe cyclic aerodynamic loads, structural fatigue
 
 ### 1. Stationary Parametric Analysis (\(C_P - \lambda\) & \(C_T - \lambda\))
 Parametric sweep across fixed pitch angles \(\phi \in [0^\circ, 16^\circ]\) evaluating mean power and thrust performance:
-![Stationary Parametric Curves](results/fig1_parametric_cp_ct.png)
+
+![Stationary Parametric Curves](fig1_parametric_cp_ct.png)
 
 ### 2. Multi-Objective Azimuthal Pitch Optimization \(\phi(\theta)\)
 Exhaustive vectorized optimization across attached angles of attack to maximize net aerodynamic torque (\(C_M\)) and minimize radial hub force magnitude (\(C_{Fa}\)):
-![Power Maximization Pitch Law](results/fig2a_max_power_pitch.png)
-![Hub Force Minimization Pitch Law](results/fig2b_minimized_cfa.png)
+
+![Power Maximization Pitch Law](fig2a_max_power_pitch.png)
+
+![Hub Force Minimization Pitch Law](fig2c_minimized_cfa.png)
 
 ### 3. Transient Dynamics & Autorotation Convergence
 Time-domain integration of the 3-blade coupled equations of motion, mapping convergence time \(\tilde{t}_{\mathrm{conv}}(\phi)\) and identifying the optimal fixed pitch angle (\(\phi = 4.60^\circ\)) for rapid steady-state autorotation:
-![Transient Time Trajectories](results/fig3a_transient_trajectories.png)
-![Autorotation Convergence & Stability](results/fig3b_autorotation_stability.png)
+
+![Transient Time Trajectories](fig3a_transient_trajectories.png)
+
+![Autorotation Convergence & Stability](fig3b_autorotation_stability.png)
 
 ## 🗂️ Repository Structure
 ```text
-├── data/                            # Public 360-degree airfoil polars (.dat)
-├── src/
-│   └── aerodynamics.py              # Polar interpolation & 2D BET kinematics
-├── results/                         # High-resolution output figures (300 dpi)
+├── aerodynamics.py                  # Polar interpolation & 2D BET kinematics
 ├── 01_parametric_pitch.py           # Stationary Cp and Ct parametric sweeps
 ├── 02_pitch_optimization.py         # Azimuthal pitch laws phi(theta) optimization
 ├── 03_transient_autorotation.py     # Time-domain dynamics & stability mapping
+├── DU_06_W_200.dat                  # 360-degree asymmetric airfoil polar
+├── NACA_0012_Re1.000_360.dat        # 360-degree symmetric airfoil polar
 └── requirements.txt                 # Python dependencies
 ```
 
 ## 🛠️ Tech Stack
 `Python 3` · `NumPy` · `SciPy` · `Pandas` · `Matplotlib`
+
